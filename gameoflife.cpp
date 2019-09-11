@@ -11,25 +11,25 @@ std::vector<bool> gameoflife::naightourCheck(std::vector<bool> prevCell)
     //n4,XX,n5,
     //n6,n7,n8;
 
-    int counterLebt = 0;
+
     int fullfield = _height * _width;
-    unsigned int n1,n2,n3,n4,n5,n6,n7,n8;
 
     std::vector<bool> newCell;
     newCell = buildCell(newCell);
 
     for (int c= 0 ; c<(fullfield); c++)
     {
+        int counterLebt = 0;
         unsigned int index = static_cast<unsigned int>(c);
 
-        n1 = trueCheck(c - _width - 1, fullfield);
-        n2 = trueCheck(c - _width    , fullfield);
-        n3 = trueCheck(c - _width + 1, fullfield);
-        n4 = trueCheck(c -          1, fullfield);
-        n5 = trueCheck(c +          1, fullfield);
-        n6 = trueCheck(c + _width - 1, fullfield);
-        n7 = trueCheck(c + _width    , fullfield);
-        n8 = trueCheck(c + _width + 1, fullfield);
+        unsigned n1 = trueCheck(c - _width - 1, fullfield);
+        unsigned n2 = trueCheck(c - _width    , fullfield);
+        unsigned n3 = trueCheck(c - _width + 1, fullfield);
+        unsigned n4 = trueCheck(c -          1, fullfield);
+        unsigned n5 = trueCheck(c +          1, fullfield);
+        unsigned n6 = trueCheck(c + _width - 1, fullfield);
+        unsigned n7 = trueCheck(c + _width    , fullfield);
+        unsigned n8 = trueCheck(c + _width + 1, fullfield);
 
 
                 if(prevCell.at(n1)==true) {++counterLebt;}
@@ -62,7 +62,6 @@ std::vector<bool> gameoflife::naightourCheck(std::vector<bool> prevCell)
                     if(counterLebt > _ruleThree)
                         newCell.at(index)=false;
                 }
-              counterLebt = 0;
     }
     return newCell;
 }
